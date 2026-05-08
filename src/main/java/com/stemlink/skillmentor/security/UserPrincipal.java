@@ -17,6 +17,6 @@ public class UserPrincipal {
 
     public String getUserId() {
 
-        return this.id;
+        return id;
     }
 }
