@@ -68,7 +68,7 @@ public class Mentor implements Serializable {
     @Column(name = "is_certified")
     private Boolean isCertified;
 
-    @Column(name = "start_year", length = 10)
+    @Column(name = "start_year")
     private Integer startYear;
 
     @CreationTimestamp
