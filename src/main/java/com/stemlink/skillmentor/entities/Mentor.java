@@ -50,7 +50,7 @@ public class Mentor implements Serializable {
     private String company;
 
     @Column(name = "experience_years")
-    private int experienceYears;
+    private Integer experienceYears;
 
     @Column(name = "bio", columnDefinition = "TEXT")
     private String bio;
