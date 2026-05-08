@@ -16,6 +16,7 @@ public class UserPrincipal {
     private String lastName;
 
     public String getUserId() {
+
         return this.id;
     }
 }

@@ -49,17 +49,19 @@ public class MentorController extends AbstractController {
             @Valid @RequestBody MentorDTO mentorDTO,
             Authentication authentication) {
 
-        Mentor mentor = modelMapper.map(mentorDTO, Mentor.class);
-
         UserPrincipal userPrincipal =
                 (UserPrincipal) authentication.getPrincipal();
 
+        Mentor mentor = modelMapper.map(mentorDTO, Mentor.class);
+
+        // IMPORTANT: force override AFTER mapping
         mentor.setMentorId(userPrincipal.getUserId());
 
         Mentor createdMentor = mentorService.createNewMentor(mentor);
 
         return sendCreatedResponse(createdMentor);
     }
+
 
     @PutMapping("{id}")
     @PreAuthorize("hasRole('" + ROLE_ADMIN + "')")
