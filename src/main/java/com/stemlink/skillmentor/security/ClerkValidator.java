@@ -76,12 +76,12 @@ public class ClerkValidator implements TokenValidator {
 
     @Override
     public String extractFirstName(String token) {
-        return JWT.decode(token).getClaim("first_Name").asString();
+        return JWT.decode(token).getClaim("firstName").asString();
     }
 
     @Override
     public String extractLastName(String token) {
-        return JWT.decode(token).getClaim("last_Name").asString();
+        return JWT.decode(token).getClaim("lastName").asString();
     }
 
     @Override
