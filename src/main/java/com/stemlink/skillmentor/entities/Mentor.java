@@ -69,7 +69,7 @@ public class Mentor implements Serializable {
     private Boolean isCertified;
 
     @Column(name = "start_year", length = 10)
-    private String startYear;
+    private Integer startYear;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)

@@ -2,6 +2,7 @@ package com.stemlink.skillmentor.controllers;
 
 import com.stemlink.skillmentor.dto.MentorDTO;
 import com.stemlink.skillmentor.entities.Mentor;
+import com.stemlink.skillmentor.security.UserPrincipal;
 import com.stemlink.skillmentor.services.MentorService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -44,10 +45,19 @@ public class MentorController extends AbstractController {
 
     @PostMapping
     @PreAuthorize("hasRole('" + ROLE_ADMIN + "')")
-    public ResponseEntity<Mentor> createMentor(@Valid @RequestBody MentorDTO mentorDTO, Authentication authentication) {
+    public ResponseEntity<Mentor> createMentor(
+            @Valid @RequestBody MentorDTO mentorDTO,
+            Authentication authentication) {
 
         Mentor mentor = modelMapper.map(mentorDTO, Mentor.class);
+
+        UserPrincipal userPrincipal =
+                (UserPrincipal) authentication.getPrincipal();
+
+        mentor.setMentorId(userPrincipal.getUserId());
+
         Mentor createdMentor = mentorService.createNewMentor(mentor);
+
         return sendCreatedResponse(createdMentor);
     }
 

@@ -14,4 +14,8 @@ public class UserPrincipal {
     private String email;
     private String firstName;
     private String lastName;
+
+    public String getUserId() {
+        return this.id;
+    }
 }

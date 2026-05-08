@@ -48,5 +48,5 @@ public class MentorDTO {
     private Boolean isCertified;
 
     @Size(max = 10, message = "Start year must not exceed 10 characters")
-    private String startYear;
+    private Integer startYear;
 }
